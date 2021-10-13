@@ -29,7 +29,7 @@ Additionally, we'd like the data in the database to be updated programmatically.
 Which tables are used
 
 - only `test1`, `zipcodes` and PostGIS function (which maybe use other tables?)
-- 2 questions
+- questions
     - how did geometries get appended the parking citation data?
         - geometries can be self generated, it is of the form
         {
@@ -42,9 +42,10 @@ Which tables are used
             - some logic and files referring to sampling
 
     - where did zip codes come from?
-        - 
-
+        - still need to investigate
 
 Left to do
 - Figure out where zip codes came from
 - see if we can run `citation-analysis` scripts
+    - if they work, move them into this directory/branch and document how to use them
+    - if they don't, fix them or ask greg to
