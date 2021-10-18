@@ -56,3 +56,37 @@ Left to do
 - [Source](https://data.lacounty.gov/Geospatial/ZIP-Codes/65v5-jw9f)
     - Source has the following columns: ObjectID, ZipCode, Shape_area, Shape_len
     - Our table has an additional column, the_geom
+**Setting up Local DB Environment (Ubuntu)**
+1. Follow this guide from StackOverflow to initially setup the database
+    - https://stackoverflow.com/questions/53267642/create-new-local-server-in-pgadmin
+2. Install PostGis ([more info](https://trac.osgeo.org/postgis/wiki/UsersWikiPostGIS24UbuntuPGSQL10Apt))
+```
+sudo apt install postgresql-12-postgis-3
+sudo apt install postgresql-12-postgis-scripts
+```
+3. This step populates the postgres db with functions from postgis and the spatial_ref_sys table. Run from the terminal
+```
+sudo -u postgres psql
+
+CREATE EXTENSION adminpack;
+
+sudo -u postgres psql
+
+\connect postgres;
+
+ALTER DATABASE postgres SET search_path=public, postgis, contrib;
+
+\connect postgres;
+CREATE EXTENSION postgis SCHEMA public;
+SELECT postgis_full_version();
+```
+Output should give something like this:
+```
+                                                                                           postgis_full_version
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------
+ POSTGIS="2.4.4 r16526" PGSQL="100" GEOS="3.6.2-CAPI-1.10.2 4d2925d6" PROJ="Rel. 4.9.3, 15 August 2016" GDAL="GDAL 2.2.3, released 2017/11/20" LIBXML=
+"2.9.4" LIBJSON="0.12.1" LIBPROTOBUF="1.2.1" RASTER
+```
+Additionally, the postgres db should now have a spatial_ref_sys table and PostGis functions
