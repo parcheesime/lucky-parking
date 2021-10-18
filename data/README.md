@@ -110,3 +110,4 @@ Next to do:
     - They may need to be modified for zip codes
 2. Figure out why local environment has different data from prod environment
     - Are they using different data? Or is one of them just out of date?
+3. Figure out how the other tables / functions were imported. Are they needed?
