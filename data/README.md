@@ -45,7 +45,14 @@ Which tables are used
         - still need to investigate
 
 Left to do
-- Figure out where zip codes came from
+- ~~Figure out where zip codes came from~~
 - see if we can run `citation-analysis` scripts
     - if they work, move them into this directory/branch and document how to use them
     - if they don't, fix them or ask greg to
+
+
+
+**Zip Codes Table**
+- [Source](https://data.lacounty.gov/Geospatial/ZIP-Codes/65v5-jw9f)
+    - Source has the following columns: ObjectID, ZipCode, Shape_area, Shape_len
+    - Our table has an additional column, the_geom
