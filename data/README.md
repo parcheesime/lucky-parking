@@ -56,6 +56,8 @@ Left to do
 - [Source](https://data.lacounty.gov/Geospatial/ZIP-Codes/65v5-jw9f)
     - Source has the following columns: ObjectID, ZipCode, Shape_area, Shape_len
     - Our table has an additional column, the_geom
+
+
 **Setting up Local DB Environment (Ubuntu)**
 1. Follow this guide from StackOverflow to initially setup the database
     - https://stackoverflow.com/questions/53267642/create-new-local-server-in-pgadmin
