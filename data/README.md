@@ -46,9 +46,9 @@ Which tables are used
 
 Left to do
 - ~~Figure out where zip codes came from~~
-- see if we can run `citation-analysis` scripts
-    - if they work, move them into this directory/branch and document how to use them
-    - if they don't, fix them or ask greg to
+- ~~see if we can run `citation-analysis` scripts~~
+    - ~~if they work, move them into this directory/branch and document how to use them~~
+    - ~~if they don't, fix them or ask greg to~~
 
 
 
@@ -92,6 +92,7 @@ Output should give something like this:
 "2.9.4" LIBJSON="0.12.1" LIBPROTOBUF="1.2.1" RASTER
 ```
 Additionally, the postgres db should now have a spatial_ref_sys table and PostGis functions
+
 4. Pull citation-analysis branch into your local machine
     - Once pulled, follow the readme file in that branch
     - The initial `sudo make data` downloads a csv file from lacity.gov and cleans it
