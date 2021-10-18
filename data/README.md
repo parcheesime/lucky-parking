@@ -92,3 +92,20 @@ Output should give something like this:
 "2.9.4" LIBJSON="0.12.1" LIBPROTOBUF="1.2.1" RASTER
 ```
 Additionally, the postgres db should now have a spatial_ref_sys table and PostGis functions
+4. Pull citation-analysis branch into your local machine
+    - Once pulled, follow the readme file in that branch
+    - The initial `sudo make data` downloads a csv file from lacity.gov and cleans it
+    - Run `sudo make geojson` to create a geojson file from the downloaded csv file
+        - Alternatively, before running `sudo make data` you can edit make_dataset.py so the function clean has an initial parameter of geojson set to True
+    - Edit the .env file in the root of the citation-analysis branch so it matches the info for your local DB environment
+        - This should be the same info as from step 1
+    - Run `sudo make upload_geojson` to upload the geojson file into your local DB
+        - If your machine complains that psycopg2 is not installed, you can install it with `sudo pip install psycopg2-binary`
+        - This creates a new table called "keyed." It should be similar to the test1 table for production.
+
+Next to do:
+1. Figure out how to upload zip codes to local db environment
+    - Current python scripts do not do that
+    - They may need to be modified for zip codes
+2. Figure out why local environment has different data from prod environment
+    - Are they using different data? Or is one of them just out of date?
