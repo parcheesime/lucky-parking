@@ -98,16 +98,30 @@ Additionally, the postgres db should now have a spatial_ref_sys table and PostGi
     - The initial `sudo make data` downloads a csv file from lacity.gov and cleans it
     - Edit the .env file in the root of the citation-analysis branch so it matches the info for your local DB environment
         - This should be the same info as from step 1
-    - Run `sudo make geojson` to create a geojson file from the downloaded csv file
+    - Run `sudo make geojson frac=0.1` to create a geojson file with 10% sampling from the downloaded csv file
         - Alternatively, before running `sudo make data` you can edit make_dataset.py so the function clean has an initial parameter of geojson set to True
     - Run `sudo make upload_geojson` to upload the geojson file into your local DB
         - If your machine complains that psycopg2 is not installed, you can install it with `sudo pip install psycopg2-binary`
         - This creates a new table called "keyed." It should be similar to the test1 table for production.
 
 Next to do:
-1. Figure out how to upload zip codes to local db environment
-    - Current python scripts do not do that
-    - They may need to be modified for zip codes
-2. Figure out why local environment has different data from prod environment
-    - Are they using different data? Or is one of them just out of date?
+1. ~~Figure out how to upload zip codes to local db environment~~
+    - ~~Current python scripts do not do that~~
+    - ~~They may need to be modified for zip codes~~
+2. ~~Figure out why local environment has different data from prod environment~~
+    - ~~Are they using different data? Or is one of them just out of date?~~
 3. Figure out how the other tables / functions were imported. Are they needed?
+
+**Zip Codes Table**
+- Source: https://data.lacounty.gov/Geospatial/ZIP-Codes/65v5-jw9f
+- Currently only downloading the geojson file directory from the link
+- Uploading the geojson file to the DB without any modifications other than column name change
+
+**Neighborhood Council Table**
+- Source: https://geohub.lacity.org/datasets/neighborhood-council-boundaries-2018/explore?location=34.308950%2C-118.162758%2C9.86
+- Currently only downloading the geojson file directory from the link
+- Uploading the geojson file to the DB without any modifications
+
+**Python Script for uploading**
+- Basically a copy of current upload.py, just modified to upload the different geojson files
+- Could potentially just use one file and use different functions for each upload
